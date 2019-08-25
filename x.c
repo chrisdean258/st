@@ -1054,30 +1054,7 @@ xinit(int cols, int rows)
 	if (!FcInit())
 		die("could not init fontconfig.\n");
 
-	if (opt_font != NULL)
-	{
-		usedfont = opt_font;
-	}
-	else
-	{
-		FILE * f;
-		int w;
-		f = popen("xrandr | grep '*'", "r");
-		if(!f) usedfont = font;
-		else
-		{
-			if(fscanf(f, "%dx%*d", &w) != 1 || w < 3000)
-			{
-				usedfont = font;
-			}
-			else
-			{
-				usedfont = hdfont;
-			}
-			fclose(f);
-		}
-	}
-	/* usedfont = (opt_font == NULL)? font : opt_font; */
+	usedfont = (opt_font == NULL)? font : opt_font;
 	xloadfonts(usedfont, 0);
 
 	/* colors */
