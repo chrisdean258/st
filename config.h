@@ -5,8 +5,11 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
+#ifndef HD
 static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-static char *hdfont = "Liberation Mono:pixelsize=24:antialias=true:autohint=true";
+#else
+static char *font = "Liberation Mono:pixelsize=24:antialias=true:autohint=true";
+#endif
 static int borderpx = 2;
 
 /*
